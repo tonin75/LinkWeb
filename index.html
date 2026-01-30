@@ -3,29 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>链接导航</title>
+    <title>全能导航链接网站</title>
+    <link rel="icon" type="image/png" href="https://vcg04.cfp.cn/creative/vcg/800/new/VCG211243293932.jpg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- 顶部导航栏 -->
+    <header class="top-nav">
+        <div class="top-nav-container">
+            <div class="logo">                
+                <h1>链接导航</h1>
+            </div>
+            <div class="top-nav-links">
+                <a href="#">首页</a>
+                <a href="#">关于我们</a>
+                <a href="#admin" class="admin-link">后台管理</a>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
         <!-- 左侧导航栏 -->
         <aside class="sidebar">
-            <h2>链接导航</h2>
+            <h2>链接分类</h2>
             <ul>
                 <!-- 分类导航项将通过JavaScript动态生成 -->
             </ul>
             <ul style="margin-top: 20px;">
                 <li>
-                    <a href="#" class="nav-link active" data-category="all">
-                        全部链接
-                    </a>
-                </li>
-            </ul>
-            <ul style="margin-top: 30px;">
-                <li>
-                    <a href="#admin" class="nav-link admin-link">
-                        后台管理
-                    </a>
+                    <a href="#" class="nav-link active" data-category="all">全部链接</a>
                 </li>
             </ul>
         </aside>
@@ -34,52 +40,165 @@
         <main class="main-content">
             <!-- 主页内容 -->
             <section id="home-section">
-                <h1 id="category-title">全部链接</h1>
+                <h1 id="category-title">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=link%20navigation%20icon%20blue%20color&image_size=square" alt="Category Icon" style="width: 48px; height: 48px; margin-right: 15px; vertical-align: middle;">
+                    <span>全部链接</span>
+                </h1>
                 <div class="links-grid" id="links-grid">
                     <!-- 链接卡片将通过JavaScript动态生成 -->
                 </div>
             </section>
 
+            <!-- 关于我们内容 -->
+            <section id="about-section" style="display: none;">
+                <div class="admin-panel">
+                    <h2>关于我们</h2>
+                    <p>这是一个链接导航网站，旨在帮助用户快速访问各种常用网站。</p>
+                    <p>我们提供了分类管理功能，用户可以根据自己的需求添加、编辑和删除链接。</p>
+                    <p>管理员可以通过后台管理界面进行链接的管理和分类的设置。</p>
+                    <p>感谢您使用我们的链接导航服务！</p>
+                </div>
+            </section>
+
             <!-- 后台管理内容 -->
             <section id="admin-section" style="display: none;">
-                <h1>后台管理</h1>
-                
-                <!-- 链接表单 -->
-                <div class="admin-panel">
-                    <h2 id="form-title">添加新链接</h2>
-                    <form id="link-form">
-                        <input type="hidden" id="link-id">
-                        
+                <!-- 登录表单 -->
+                <div id="login-form-container" class="admin-panel">
+                    <h2>管理员登录</h2>
+                    <form id="login-form">
                         <div class="form-group">
-                            <label for="title">链接标题</label>
+                            <label for="username">用户名</label>
                             <input
                                 type="text"
-                                id="title"
-                                name="title"
+                                id="username"
+                                name="username"
                                 required
                             >
                         </div>
                         
                         <div class="form-group">
-                            <label for="url">链接地址</label>
+                            <label for="password">密码</label>
                             <input
-                                type="url"
-                                id="url"
-                                name="url"
+                                type="password"
+                                id="password"
+                                name="password"
                                 required
                             >
                         </div>
                         
-                        <div class="form-group">
-                            <label for="description">链接描述</label>
-                            <textarea
-                                id="description"
-                                name="description"
-                                required
-                            ></textarea>
+                        <div>
+                            <button type="submit" class="btn btn-primary">
+                                登录
+                            </button>
+                        </div>
+                        <p id="login-error" style="color: red; margin-top: 10px; display: none;">用户名或密码错误</p>
+                    </form>
+                </div>
+                
+                <!-- 管理内容 -->
+                <div id="admin-content" style="display: none;">
+                    <h1>后台管理</h1>
+                                        
+                    <!-- 分类管理部分 -->
+                    <div class="admin-panel">
+                        <h2 style="font-size: 36px; margin-bottom: 25px;">分类管理</h2>
+                        <div style="margin-bottom: 25px;">
+                            <button type="button" class="btn btn-primary" id="add-category-btn" style="font-size: 20px; padding: 12px 24px;">
+                                添加分类
+                            </button>
+                            <button type="button" class="btn btn-danger" id="reset-categories-btn" style="margin-left: 15px; font-size: 20px; padding: 12px 24px;">
+                                重置分类
+                            </button>
                         </div>
                         
-                        <div class="form-group">
+                        <!-- 分类表单 -->
+                        <div id="category-form-container" class="admin-panel" style="display: none;">
+                            <h3 id="category-form-title" style="font-size: 28px; margin-bottom: 20px;">添加新分类</h3>
+                            <form id="category-form">
+                                <input type="hidden" id="category-id">
+                                
+                                <div class="form-group">
+                                    <label for="category-name" style="font-size: 20px;">分类名称</label>
+                                    <input
+                                        type="text"
+                                        id="category-name"
+                                        name="category-name"
+                                        required
+                                        style="font-size: 24px; padding: 15px;"
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="category-icon" style="font-size: 20px;">分类图标</label>
+                                    <input
+                                        type="text"
+                                        id="category-icon"
+                                        name="category-icon"
+                                        placeholder="例如：📁 或图片URL"
+                                        required
+                                        style="font-size: 24px; padding: 15px;"
+                                    >
+                                    <small style="color: #aaa; display: block; margin-top: 10px; font-size: 16px;">支持表情符号或图片URL（如：https://example.com/icon.png）</small>
+                                </div>
+                                
+                                <div style="margin-top: 20px;">
+                                    <button type="submit" class="btn btn-primary" style="font-size: 20px; padding: 12px 24px;">
+                                        保存分类
+                                    </button>
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-danger" 
+                                        id="cancel-category-btn"
+                                        style="margin-left: 15px; font-size: 20px; padding: 12px 24px;"
+                                    >
+                                        取消
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- 分类列表 -->
+                        <div id="categories-list">
+                            <!-- 分类列表项将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 链接管理部分 -->
+                    <div class="admin-panel">
+                        <h2 id="form-title">添加新链接</h2>
+                        <form id="link-form">
+                            <input type="hidden" id="link-id">
+                            
+                            <div class="form-group">
+                                <label for="title">链接标题</label>
+                                <input
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="url">链接地址</label>
+                                <input
+                                    type="url"
+                                    id="url"
+                                    name="url"
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">链接描述</label>
+                                <textarea
+                                    id="description"
+                                    name="description"
+                                    required
+                                ></textarea>
+                            </div>
+                            
+                            <div class="form-group">
                             <label for="icon">链接图标</label>
                             <input
                                 type="text"
@@ -88,52 +207,59 @@
                                 placeholder="例如：🤖"
                                 required
                             >
+                            <div style="margin-top: 10px;">
+                                <label>选择图标：</label>
+                                <div id="icon-selector" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px;">
+                                    <!-- 图标选项将通过JavaScript动态生成 -->
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="categoryId">分类</label>
-                            <select
-                                id="categoryId"
-                                name="categoryId"
-                                required
-                            >
-                                <option value="">选择分类</option>
-                                <!-- 分类选项将通过JavaScript动态生成 -->
-                            </select>
+                            
+                            <div class="form-group">
+                                <label for="categoryId">分类</label>
+                                <select
+                                    id="categoryId"
+                                    name="categoryId"
+                                    required
+                                >
+                                    <option value="">选择分类</option>
+                                    <!-- 分类选项将通过JavaScript动态生成 -->
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="color">图标背景色</label>
+                                <input
+                                    type="color"
+                                    id="color"
+                                    name="color"
+                                    value="#00bcd4"
+                                    required
+                                >
+                            </div>
+                            
+                            <div>
+                                <button type="submit" class="btn btn-primary" id="submit-btn">
+                                    添加链接
+                                </button>
+                                <button 
+                                    type="button" 
+                                    class="btn btn-danger" 
+                                    id="cancel-btn"
+                                    style="margin-left: 10px; display: none;"
+                                >
+                                    取消编辑
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- 链接列表 -->
+                    <div class="links-list">
+                        <h2>已添加的链接</h2>
+                        <div id="links-list">
+                            <!-- 链接列表项将通过JavaScript动态生成 -->
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="color">图标背景色</label>
-                            <input
-                                type="color"
-                                id="color"
-                                name="color"
-                                value="#00bcd4"
-                                required
-                            >
-                        </div>
-                        
-                        <div>
-                            <button type="submit" class="btn btn-primary" id="submit-btn">
-                                添加链接
-                            </button>
-                            <button 
-                                type="button" 
-                                class="btn btn-danger" 
-                                id="cancel-btn"
-                                style="margin-left: 10px; display: none;"
-                            >
-                                取消编辑
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                
-                <!-- 链接列表 -->
-                <div class="links-list">
-                    <h2>已添加的链接</h2>
-                    <div id="links-list">
-                        <!-- 链接列表项将通过JavaScript动态生成 -->
                     </div>
                 </div>
             </section>
