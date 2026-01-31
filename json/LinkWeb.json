@@ -1,0 +1,91 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "游戏类网站",
+      "icon": "res/GameIcon.png"
+    },
+    {
+      "id": 2,
+      "name": "工作类工具",
+      "icon": "res/workicon.png"
+    },
+    {
+      "id": 3,
+      "name": "其它类工具",
+      "icon": "res/othericon.png"
+    },
+    {
+      "id": 4,
+      "name": "资源类工具（占没用）",
+      "icon": "📚"
+    },
+    {
+      "id": 5,
+      "name": "娱乐类网站（占没用）",
+      "icon": "🎮"
+    },
+    {
+      "id": 6,
+      "name": "其它类工具（占没用）",
+      "icon": "🤖"
+    }
+  ],
+  "links": [
+    {
+      "id": 1,
+      "title": "Trae AI编程助手",
+      "url": "https://trae-ai.com",
+      "description": "AI辅助编程工具，提高开发效率",
+      "icon": "🧠",
+      "categoryId": 1,
+      "color": "#00bcd4"
+    },
+    {
+      "id": 2,
+      "title": "GitHub",
+      "url": "https://github.com",
+      "description": "全球最大的代码托管平台",
+      "icon": "📁",
+      "categoryId": 2,
+      "color": "#333333"
+    },
+    {
+      "id": 3,
+      "title": "Figma",
+      "url": "https://figma.com",
+      "description": "在线设计协作工具",
+      "icon": "🎨",
+      "categoryId": 3,
+      "color": "#ff6b6b"
+    },
+    {
+      "id": 4,
+      "title": "MDN Web Docs",
+      "url": "https://developer.mozilla.org",
+      "description": "Web开发文档",
+      "icon": "📚",
+      "categoryId": 4,
+      "color": "#2196f3"
+    },
+    {
+      "id": 5,
+      "title": "YouTube",
+      "url": "https://youtube.com",
+      "description": "视频分享平台",
+      "icon": "🎬",
+      "categoryId": 5,
+      "color": "#ff0000"
+    },
+    {
+      "id": 1769794179779,
+      "title": "游戏下载",
+      "url": "https://www.gamer520.com/",
+      "description": "免费游戏下载网站",
+      "icon": "res/GameIcon.png",
+      "categoryId": 1,
+      "color": "#00bcd4"
+    }
+  ],
+  "timestamp": "2026-01-30T17:51:19.054Z"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "linkweb",
+  "version": "1.0.0",
+  "description": "Link management system with JSON file storage",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "link",
+    "management",
+    "json"
+  ],
+  "author": "",
+  "license": "ISC"
+}
